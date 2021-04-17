@@ -1,0 +1,65 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --blue-color: blue;
+  --red-color:red;
+}
+
+body {
+  background-color: #272727;
+}
+
+label, .main .main_paragraph2 {
+  background: red;
+}
+
+label, .main .main_paragraph2 {
+  color: white;
+}
+
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.main .main_paragraph1 {
+  text-align: center;
+  color: #fff;
+  font-weight: 400;
+}
+
+.main .main_paragraph1:hover {
+  color: #ff652f;
+}
+
+.main .main_paragraph2:hover {
+  color: darkgoldenrod;
+}
+
+@media (max-width: 800px) {
+  .main {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+/*# sourceMappingURL=main.css.map */

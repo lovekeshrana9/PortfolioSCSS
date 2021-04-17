@@ -1,0 +1,84 @@
+@import './resets' , './variable';
+//in normal css we add variable like this and to use variable use var() 
+:root{
+    --blue-color: blue;
+    --red-color:red;
+}
+
+// function in scss
+//function should be used to compute and return values
+@function weight($weight-name){
+    @return map-get($font-weights, $weight-name); //using map
+}
+
+//mixin should be used for styling
+@mixin flexCenter($flex-direction){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $flex-direction;
+}
+
+@mixin theme($light-theme){ //we can provide default value also $light-theme:true like this
+    @if $light-theme{
+        background-color: lighten($primary-color, 20%);
+        color: darken($text-color, 100%);
+    }
+}
+
+@mixin mobile {
+    @media (max-width: $mobile) {
+        //this content will passed when the mixin is called
+        @content ;
+    }
+}
+
+//Operation
+//in css we have calc function
+// in scss we dont need calc we can directly perform what the value should be of same unit
+
+
+
+body{
+    background-color: $primary-color;
+}
+
+label{
+    background: red;
+}
+
+label{
+    color: white;
+}
+
+.main{
+    @include flexCenter(row);
+    width: 80%;
+    margin: 0 auto;
+    //nesting
+    // &_paragraph{  if we just use ampersand then the class will not be part of .main class >here ampersand equal parent
+       #{&}_paragraph1{  //interpolation this will add parent class as well
+        text-align: center;
+        color: $text-color;
+        font-weight: weight(regular);
+
+        &:hover{
+            color: $accent-color;
+        }
+    }
+    
+    #{&}_paragraph2{
+        @extend label; //extending all the style of paragraph1 into paragraph2
+        &:hover{
+            color: darkgoldenrod;
+        }
+    }
+
+    @include mobile{
+        flex-direction: column; // this will override the @content
+    }
+}
+
+.light{
+    @include theme(false);
+}
